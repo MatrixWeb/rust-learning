@@ -18,6 +18,15 @@ enum WebEvent {
     WEKeys(KeyPress)
 }
 
+fn divide_by_5(num: i32) -> i32 {
+    num / 5
+}
+
+fn goodbye(message: &str) -> bool {
+    println!("\n{}", message);
+    return true
+}
+
 fn main() {
     println!("Hello, world!");
     println!("the first letter is {}, end is {}", 'A', 'Z');
@@ -70,4 +79,12 @@ fn main() {
     let we_click= WebEvent::WEClick(click);
     let we_key = WebEvent::WEKeys(keys);
     println!("\nWebEvent enum structure: \n\n {:#?} \n\n {:#?} \n\n {:#?}", we_load, we_click, we_key);
+    // function
+    let num = 25;
+    println!("{} divided by 5 = {}", num, divide_by_5(num));
+    
+    let formal = "Formal: Good bye.";
+    let casual = "Casual: See you later!";
+    goodbye(formal);
+    goodbye(casual);
 }
