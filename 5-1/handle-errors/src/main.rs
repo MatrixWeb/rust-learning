@@ -1,3 +1,6 @@
+#[derive(Debug)]
+struct DivisionByZeroError;
+
 fn main() {
     println!("Hello, world!");
     //panic!("Farewell!!");
@@ -19,6 +22,18 @@ fn main() {
     let gift = Some("Candy");
     assert_eq!(gift.unwrap(), "Candy");
     assert_eq!(None.unwrap_or("Cat"), "Cat");
-    let b: Option<&str> = None;
-    b.expect("fruits are healthy");
+    //let b: Option<&str> = None;
+    //b.expect("fruits are healthy");
+    // learn Result
+    println!("{:?}", safe_division(9.0, 3.0));
+    println!("{:?}", safe_division(4.0, 0.0));
+    println!("{:?}", safe_division(0.0, 2.0));
+}
+
+fn safe_division(dividend: f64, divisor: f64) -> Result<f64, DivisionByZeroError> {
+    if divisor == 0.0 {
+        Err(DivisionByZeroError)
+    } else {
+        Ok(dividend / divisor)
+    }
 }
